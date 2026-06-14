@@ -1,0 +1,24 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "leads": {
+      "$leadId": {
+        ".read": false,
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['name','phone','createdAt']) && newData.child('name').isString() && newData.child('name').val().length >= 2 && newData.child('name').val().length <= 80 && newData.child('phone').isString() && newData.child('phone').val().length <= 20 && newData.child('email').val().length <= 120 && newData.child('city').val().length <= 60 && newData.child('room').val().length <= 40 && newData.child('style').val().length <= 60 && newData.child('message').val().length <= 1000",
+
+        "name":      { ".validate": "newData.isString()" },
+        "phone":     { ".validate": "newData.isString()" },
+        "email":     { ".validate": "newData.isString()" },
+        "city":      { ".validate": "newData.isString()" },
+        "room":      { ".validate": "newData.isString()" },
+        "style":     { ".validate": "newData.isString()" },
+        "message":   { ".validate": "newData.isString()" },
+        "createdAt": { ".validate": "newData.isNumber() || newData.val() == now" },
+        "$other":    { ".validate": false }
+      }
+    }
+  }
+}

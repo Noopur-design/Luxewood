@@ -1,0 +1,67 @@
+[
+  {
+    "id": "living-room",
+    "title": "Living Room",
+    "subtitle": "Crafted comfort",
+    "thumbnail": null,
+    "modelPath": "/models/living-room.glb",
+    "description": "Signature seating with hand-stitched upholstery and solid walnut frames. Each piece is made to order.",
+    "hotspots": [
+      { "id": "sofa",        "label": "Heritage Sofa",    "position": [ 0,   0.8,  0  ] },
+      { "id": "side-table",  "label": "Elm Side Table",   "position": [ 1.4, 0.55, 0.6] }
+    ]
+  },
+  {
+    "id": "dining",
+    "title": "Dining Room",
+    "subtitle": "Gather in style",
+    "thumbnail": null,
+    "modelPath": "/models/dining.glb",
+    "description": "Heirloom-quality tables and chairs designed to anchor every gathering, large or intimate.",
+    "hotspots": [
+      { "id": "dining-table", "label": "Oak Dining Table", "position": [0, 0.75, 0] }
+    ]
+  },
+  {
+    "id": "bedroom",
+    "title": "Bedroom",
+    "subtitle": "Rest, refined",
+    "thumbnail": null,
+    "modelPath": "/models/bedroom.glb",
+    "description": "Beds, wardrobes, and nightstands designed for serene, uncluttered living.",
+    "hotspots": [
+      { "id": "bed",       "label": "Platform Bed",    "position": [0,   0.5, 0  ] },
+      { "id": "wardrobe",  "label": "Walnut Wardrobe", "position": [2.8, 1.0, 0.2] }
+    ]
+  },
+  {
+    "id": "home-office",
+    "title": "Home Office",
+    "subtitle": "Work with intention",
+    "thumbnail": null,
+    "modelPath": "/models/home-office.glb",
+    "description": "Desks, shelving, and storage that blend focus-driven form with enduring function.",
+    "hotspots": [
+      { "id": "desk",    "label": "Standing Desk",   "position": [0,   0.78, 0  ] },
+      { "id": "shelves", "label": "Open Shelving",   "position": [-2,  1.2,  0.3] }
+    ]
+  },
+  {
+    "id": "outdoor",
+    "title": "Outdoor",
+    "subtitle": "Nature, furnished",
+    "thumbnail": null,
+    "modelPath": "/models/outdoor.glb",
+    "description": "Weather-resistant teak and powder-coated steel pieces built for the long summer.",
+    "hotspots": []
+  },
+  {
+    "id": "entryway",
+    "title": "Entryway",
+    "subtitle": "First impressions",
+    "thumbnail": null,
+    "modelPath": "/models/entryway.glb",
+    "description": "Console tables, benches, and mirror frames that set the tone from the moment you walk in.",
+    "hotspots": []
+  }
+]

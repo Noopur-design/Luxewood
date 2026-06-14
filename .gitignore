@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+server/serviceAccountKey.json
+server/data/
+*.log
+.claude/
+.vercel/

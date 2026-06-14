@@ -1,0 +1,232 @@
+{
+  "living-room": {
+    "title": "Living Room",
+    "subtitle": "Where every gathering begins",
+    "icon": "◻",
+    "hotspots": {
+      "sofa":         { "label": "Heritage Sofa",      "desc": "Hand-stitched wool-blend upholstery over a solid walnut frame. Available in 12 fabrics.", "price": "From $2,400" },
+      "coffee-table": { "label": "Elm Coffee Table",   "desc": "Book-matched elm slab on hand-forged hairpin legs. Each grain pattern is unique.", "price": "From $890" },
+      "tv-unit":      { "label": "Media Console",      "desc": "Solid oak with hidden cable management and soft-close drawers.", "price": "From $1,100" },
+      "floor-lamp":   { "label": "Arc Floor Lamp",     "desc": "Spun-brass shade on a weighted marble base. Warm 2700K LED.", "price": "From $480" },
+      "rug":          { "label": "Wool Area Rug",      "desc": "Hand-loomed New Zealand wool. Naturally stain-resistant.", "price": "From $640" }
+    },
+    "styles": [
+      {
+        "id": "minimal",
+        "name": "Minimal",
+        "tagline": "Calm, considered, effortless",
+        "description": "Cream sectionals, live-edge walnut, and floor-to-ceiling glass. Nothing competes. Everything belongs.",
+        "image": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=900&q=85&fit=crop",
+        "palette": { "wall": "#7A9099", "floor": "#D4C8A8", "sofa": "#E2DFDA", "accent": "#9A7A50", "rug": "#DEDBD6" }
+      },
+      {
+        "id": "classy",
+        "name": "Classy",
+        "tagline": "Grand scale, natural warmth",
+        "description": "Soaring ceilings, exposed timber beams, raw concrete fireplace — commanding presence without pretension.",
+        "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=85&fit=crop",
+        "palette": { "wall": "#F8F2E8", "floor": "#7B5030", "sofa": "#4A2E14", "accent": "#C09030", "rug": "#C84848" }
+      },
+      {
+        "id": "modern",
+        "name": "Modern",
+        "tagline": "Wandering soul, rooted home",
+        "description": "Olive velvet, hand-knotted kilims, hanging botanicals, and a Moroccan lantern. Layered and gloriously alive.",
+        "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=85&fit=crop",
+        "palette": { "wall": "#EDEDED", "floor": "#3A3A3A", "sofa": "#1A1A1A", "accent": "#C0A850", "rug": "#505050" }
+      },
+      {
+        "id": "rustic",
+        "name": "Rustic",
+        "tagline": "Warm and grounded",
+        "description": "Rough-hewn oak, terracotta, and amber candlelight. A room that slows the day down to something worth keeping.",
+        "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=85&fit=crop",
+        "palette": { "wall": "#F0E4D4", "floor": "#7A4E28", "sofa": "#8B5020", "accent": "#C07040", "rug": "#B07858" }
+      }
+    ]
+  },
+
+  "dining": {
+    "title": "Dining Room",
+    "subtitle": "A table worth gathering around",
+    "icon": "◉",
+    "hotspots": {
+      "table":      { "label": "Oak Dining Table",   "desc": "7cm solid white oak slab, hand-planed edges. Seats 8 comfortably.", "price": "From $3,200" },
+      "chair":      { "label": "Walnut Chair",       "desc": "Turned walnut legs, padded seat in performance linen.", "price": "From $420 each" },
+      "sideboard":  { "label": "Sideboard",          "desc": "Solid oak carcass with cane-fronted doors and blackened steel pulls.", "price": "From $1,800" },
+      "pendant":    { "label": "Rattan Pendant",     "desc": "Hand-woven natural rattan. Warm-white bulb included.", "price": "From $260" }
+    },
+    "styles": [
+      {
+        "id": "minimal",
+        "name": "Minimal",
+        "tagline": "Quiet luxury",
+        "description": "A single statement table, paired chairs, and nothing more. Restraint as a design choice.",
+        "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=700&q=80",
+        "palette": { "wall": "#F5F3EE", "floor": "#D8D0C0", "table": "#C0A880", "chair": "#B8A888", "accent": "#906848" }
+      },
+      {
+        "id": "classy",
+        "name": "Classy",
+        "tagline": "Grand dining",
+        "description": "Dark wood, upholstered chairs, and a statement pendant. Every dinner feels like an occasion.",
+        "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80",
+        "palette": { "wall": "#F8F0E0", "floor": "#6B4020", "table": "#3A2008", "chair": "#5C3010", "accent": "#C09030" }
+      },
+      {
+        "id": "modern",
+        "name": "Modern",
+        "tagline": "Sharp and deliberate",
+        "description": "Concrete table, steel-framed chairs, and industrial lighting. Design that doesn't compromise.",
+        "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80",
+        "palette": { "wall": "#E8E8E8", "floor": "#404040", "table": "#202020", "chair": "#303030", "accent": "#C0A860" }
+      },
+      {
+        "id": "rustic",
+        "name": "Rustic",
+        "tagline": "Farmhouse warmth",
+        "description": "Long reclaimed pine table, mismatched wooden chairs, and a warm glow overhead.",
+        "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80",
+        "palette": { "wall": "#EEE0CC", "floor": "#7A5030", "table": "#6A4020", "chair": "#8A5830", "accent": "#B07040" }
+      }
+    ]
+  },
+
+  "bedroom": {
+    "title": "Bedroom",
+    "subtitle": "Rest, beautifully",
+    "icon": "◇",
+    "hotspots": {
+      "bed":        { "label": "Platform Bed",       "desc": "Low-profile walnut frame with floating base. Available in UK King, Super King.", "price": "From $2,800" },
+      "nightstand": { "label": "Nightstand",         "desc": "Floating bedside in oiled oak, single drawer with soft-close mechanism.", "price": "From $480 each" },
+      "wardrobe":   { "label": "Fitted Wardrobe",    "desc": "Full-height solid oak with interior organisers and silent hinges.", "price": "From $4,200" },
+      "lamp":       { "label": "Table Lamp",         "desc": "Hand-thrown ceramic base, linen shade. 2400K warm light.", "price": "From $180 each" }
+    },
+    "styles": [
+      {
+        "id": "minimal",
+        "name": "Minimal",
+        "tagline": "Serene simplicity",
+        "description": "White linen, bare walls, and a low platform bed. Sleep without distraction.",
+        "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80",
+        "palette": { "wall": "#E8E4DE", "floor": "#1E1408", "bed": "#2C2C2C", "accent": "#7A6B5A", "rug": "#F0EEE8" }
+      },
+      {
+        "id": "classy",
+        "name": "Classy",
+        "tagline": "Hotel-suite luxury",
+        "description": "Upholstered headboard, layered linens, and walnut nightstands. Every night feels like a stay.",
+        "image": "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=80",
+        "palette": { "wall": "#F5EEE0", "floor": "#7A5030", "bed": "#3A2010", "accent": "#C09030", "rug": "#6A3828" }
+      },
+      {
+        "id": "modern",
+        "name": "Modern",
+        "tagline": "Crisp and calm",
+        "description": "Charcoal walls, white bedding, and geometric furniture. A room that means business.",
+        "image": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=700&q=80",
+        "palette": { "wall": "#ECECEC", "floor": "#383838", "bed": "#181818", "accent": "#C0A850", "rug": "#282828" }
+      },
+      {
+        "id": "rustic",
+        "name": "Rustic",
+        "tagline": "Cosy retreat",
+        "description": "Exposed beam headboard, chunky knit throws, and amber candlelight.",
+        "image": "https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?w=700&q=80",
+        "palette": { "wall": "#EEE0D0", "floor": "#7A4E28", "bed": "#6A3818", "accent": "#C06840", "rug": "#7A5838" }
+      }
+    ]
+  },
+
+  "home-office": {
+    "title": "Home Office",
+    "subtitle": "Work with intention",
+    "icon": "◈",
+    "hotspots": {
+      "desk":    { "label": "Standing Desk",    "desc": "Solid walnut top on motorised sit-stand frame. Memory presets included.", "price": "From $1,600" },
+      "chair":   { "label": "Task Chair",       "desc": "Ergonomic mesh back, walnut arms. Lumbar adjustment built in.", "price": "From $780" },
+      "shelves": { "label": "Open Shelving",    "desc": "Wall-mounted solid oak planks on hand-forged steel brackets.", "price": "From $320" },
+      "lamp":    { "label": "Desk Lamp",        "desc": "Adjustable arm in blackened steel, 3000K warm light with dimmer.", "price": "From $240" }
+    },
+    "styles": [
+      {
+        "id": "minimal",
+        "name": "Minimal",
+        "tagline": "Focus, uncluttered",
+        "description": "One desk, one chair, one lamp. Nothing to distract from the work that matters.",
+        "image": "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=700&q=80",
+        "palette": { "wall": "#F5F3EE", "floor": "#DDD5C5", "desk": "#C8BBA8", "accent": "#A09080", "shelves": "#D0C8B8" }
+      },
+      {
+        "id": "classy",
+        "name": "Classy",
+        "tagline": "The executive study",
+        "description": "Leather-topped walnut desk, floor-to-ceiling shelves, and a reading chair. Power and taste.",
+        "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=700&q=80",
+        "palette": { "wall": "#F5EDDC", "floor": "#6B4020", "desk": "#3A2008", "accent": "#C09030", "shelves": "#4A2E10" }
+      },
+      {
+        "id": "modern",
+        "name": "Modern",
+        "tagline": "Studio-grade workspace",
+        "description": "Concrete desk surface, cable management, and task lighting. Built for deep work.",
+        "image": "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?w=700&q=80",
+        "palette": { "wall": "#E8E8E8", "floor": "#383838", "desk": "#1A1A1A", "accent": "#C0A860", "shelves": "#303030" }
+      },
+      {
+        "id": "rustic",
+        "name": "Rustic",
+        "tagline": "The cosy study",
+        "description": "Rough-sawn pine desk, natural wool rug, and warm lamplight. A room that inspires.",
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80",
+        "palette": { "wall": "#EEE0CC", "floor": "#7A5030", "desk": "#6A3818", "accent": "#C07040", "shelves": "#7A5030" }
+      }
+    ]
+  },
+
+  "kitchen": {
+    "title": "Kitchen",
+    "subtitle": "The heart of the home",
+    "icon": "◎",
+    "hotspots": {
+      "counter":  { "label": "Marble Worktop",     "desc": "Honed Calacatta marble on solid oak cabinetry. Brass hardware throughout.", "price": "From $4,800" },
+      "island":   { "label": "Kitchen Island",     "desc": "Waterfall-edge oak island with seating for three and integrated storage.", "price": "From $2,600" },
+      "stool":    { "label": "Bar Stool",          "desc": "Solid walnut seat on blackened steel base. Counter and bar height.", "price": "From $320 each" },
+      "shelves":  { "label": "Open Shelving",      "desc": "Solid oak floating shelves on cast-iron brackets.", "price": "From $220" }
+    },
+    "styles": [
+      {
+        "id": "minimal",
+        "name": "Minimal",
+        "tagline": "Handleless and clean",
+        "description": "Flat-front white cabinetry, integrated appliances, and a single marble worktop. Nothing extra.",
+        "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80",
+        "palette": { "wall": "#F5F3EE", "floor": "#E8E0D0", "cabinet": "#EEEBE4", "counter": "#D8D0C0", "accent": "#A89880" }
+      },
+      {
+        "id": "classy",
+        "name": "Classy",
+        "tagline": "Shaker meets luxury",
+        "description": "Deep navy shaker doors, brass hardware, and a marble island. Classic, never dated.",
+        "image": "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=700&q=80",
+        "palette": { "wall": "#F0EAD8", "floor": "#7A5030", "cabinet": "#1E2E48", "counter": "#E0D8CC", "accent": "#C09030" }
+      },
+      {
+        "id": "modern",
+        "name": "Modern",
+        "tagline": "Industrial edge",
+        "description": "Concrete-effect cabinetry, matte black fixtures, and open steel shelving.",
+        "image": "https://images.unsplash.com/photo-1556909190-8b87a9aa1386?w=700&q=80",
+        "palette": { "wall": "#E8E8E8", "floor": "#3A3A3A", "cabinet": "#282828", "counter": "#A8A8A8", "accent": "#C0A860" }
+      },
+      {
+        "id": "rustic",
+        "name": "Rustic",
+        "tagline": "Farmhouse kitchen",
+        "description": "Tongue-and-groove painted cabinets, butcher-block tops, and a Belfast sink. Timeless warmth.",
+        "image": "https://images.unsplash.com/photo-1556909060-05f4a2a1e18e?w=700&q=80",
+        "palette": { "wall": "#EEE0CC", "floor": "#7A4E28", "cabinet": "#5A8040", "counter": "#B8905A", "accent": "#C07040" }
+      }
+    ]
+  }
+}

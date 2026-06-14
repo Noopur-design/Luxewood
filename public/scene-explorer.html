@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>LuxeWood — Scene Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#FAF8F5;--wood:#2E1A06;--wood-mid:#7B5230;--wood-lt:#B88050;
+      --gold:#C8920A;--linen:#F2EDE3;--border:rgba(74,46,16,.12);
+      --text:#1C1208;--muted:#9C8060;
+      --shadow:0 8px 32px rgba(0,0,0,.14);
+    }
+    html,body{height:100%;overflow:hidden;font-family:'DM Sans',system-ui,sans-serif;background:#1a1a1a;color:var(--text)}
+    img{display:block;max-width:100%}
+    button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+    /* ── Scene viewport ── */
+    #scene{position:fixed;inset:0;overflow:hidden}
+    #room-img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center;
+      transform-origin:center center;
+      transition:transform .05s linear;
+      user-select:none;pointer-events:none;
+    }
+    #scene-vignette{
+      position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(0,0,0,.45) 100%);
+    }
+
+    /* ── Hotspots ── */
+    .hotspot{
+      position:absolute;transform:translate(-50%,-50%);
+      width:22px;height:22px;cursor:pointer;z-index:10;
+    }
+    .hotspot__ring{
+      position:absolute;inset:0;border-radius:50%;
+      border:2px solid rgba(255,255,255,.9);
+      box-shadow:0 0 0 3px rgba(255,255,255,.3);
+      animation:pulse 2.2s ease-in-out infinite;
+    }
+    .hotspot__dot{
+      position:absolute;inset:5px;border-radius:50%;
+      background:#fff;
+    }
+    .hotspot.active .hotspot__ring{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,146,10,.35)}
+    .hotspot.active .hotspot__dot{background:var(--gold)}
+    @keyframes pulse{
+      0%,100%{box-shadow:0 0 0 3px rgba(255,255,255,.3),0 0 0 6px rgba(255,255,255,.06)}
+      50%    {box-shadow:0 0 0 6px rgba(255,255,255,.18),0 0 0 11px rgba(255,255,255,.04)}
+    }
+
+    /* Selection highlight box — corner-bracket focus reticle */
+    #select-box{
+      position:absolute;pointer-events:none;z-index:9;
+      width:90px;height:90px;
+      opacity:0;
+      transition:opacity .3s ease,
+                 left .45s cubic-bezier(.22,.68,0,1.2),
+                 top  .45s cubic-bezier(.22,.68,0,1.2);
+    }
+    #select-box.visible{opacity:1}
+    /* Four corner brackets drawn with pseudo + child spans */
+    #select-box::before,#select-box::after,
+    #select-box .sb-br,#select-box .sb-bl{
+      content:'';position:absolute;width:18px;height:18px;
+    }
+    #select-box::before{ top:0;left:0;
+      border-top:2.5px solid var(--gold);border-left:2.5px solid var(--gold);border-radius:3px 0 0 0;}
+    #select-box::after{  top:0;right:0;
+      border-top:2.5px solid var(--gold);border-right:2.5px solid var(--gold);border-radius:0 3px 0 0;}
+    #select-box .sb-bl{  bottom:0;left:0;
+      border-bottom:2.5px solid var(--gold);border-left:2.5px solid var(--gold);border-radius:0 0 0 3px;}
+    #select-box .sb-br{  bottom:0;right:0;
+      border-bottom:2.5px solid var(--gold);border-right:2.5px solid var(--gold);border-radius:0 0 3px 0;}
+    /* Subtle inner glow */
+    #select-box .sb-inner{
+      position:absolute;inset:8px;
+      background:rgba(200,146,10,.06);
+      border-radius:2px;
+    }
+
+    /* ── Draggable card base ── */
+    .panel{
+      position:fixed;z-index:50;
+      background:rgba(250,248,245,.94);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      user-select:none;
+    }
+    .panel__handle{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 16px 8px;
+      cursor:grab;border-radius:16px 16px 0 0;
+    }
+    .panel__handle:active{cursor:grabbing}
+    .panel__label{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .drag-dots{display:flex;gap:3px;align-items:center}
+    .drag-dots span{width:3px;height:3px;border-radius:50%;background:var(--muted);opacity:.5}
+
+    /* ── Back button ── */
+    #btn-back{
+      position:fixed;top:20px;left:20px;z-index:60;
+      display:flex;align-items:center;gap:8px;
+      padding:9px 18px 9px 14px;
+      background:rgba(250,248,245,.94);
+      backdrop-filter:blur(16px);
+      border:1px solid var(--border);
+      border-radius:100px;
+      font-size:.78rem;font-weight:500;
+      color:var(--wood);
+      box-shadow:0 4px 16px rgba(0,0,0,.12);
+      transition:background .2s,transform .15s;
+    }
+    #btn-back:hover{background:#fff;transform:translateX(-2px)}
+    #btn-back svg{width:16px;height:16px}
+
+    /* ── Room tabs ── */
+    #room-tabs{
+      position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:60;
+      display:flex;gap:4px;
+      background:rgba(250,248,245,.92);
+      backdrop-filter:blur(16px);
+      border:1px solid var(--border);
+      border-radius:100px;
+      padding:5px;
+      box-shadow:0 4px 16px rgba(0,0,0,.12);
+    }
+    .room-tab{
+      padding:7px 18px;border-radius:100px;
+      font-size:.76rem;font-weight:500;color:var(--muted);
+      transition:background .2s,color .2s;white-space:nowrap;
+    }
+    .room-tab.active{background:var(--wood);color:#fff}
+    .room-tab:hover:not(.active){background:var(--linen);color:var(--wood)}
+
+    /* ── Camera controls panel ── */
+    #cam-panel{
+      top:76px;left:20px;
+      width:220px;
+      padding-bottom:14px;
+    }
+    .cam-row{padding:4px 16px 10px;display:flex;flex-direction:column;gap:5px}
+    .cam-label{font-size:.68rem;font-weight:500;color:var(--muted);display:flex;justify-content:space-between}
+    .cam-label span{color:var(--wood);font-weight:600}
+    input[type=range]{
+      width:100%;height:4px;accent-color:var(--gold);cursor:pointer;
+      -webkit-appearance:none;background:var(--border);border-radius:2px;
+    }
+    input[type=range]::-webkit-slider-thumb{
+      -webkit-appearance:none;width:14px;height:14px;
+      border-radius:50%;background:var(--gold);
+      box-shadow:0 1px 4px rgba(0,0,0,.2);
+    }
+    .cam-divider{height:1px;background:var(--border);margin:4px 16px}
+    .cam-quality{padding:4px 16px 0;display:flex;flex-direction:column;gap:5px}
+    select{
+      width:100%;padding:6px 10px;border-radius:8px;
+      border:1px solid var(--border);background:var(--bg);
+      font-family:inherit;font-size:.78rem;color:var(--wood);cursor:pointer;
+    }
+
+    /* ── Info panel ── */
+    #info-panel{
+      top:76px;right:20px;
+      width:300px;
+      opacity:0;transform:translateX(16px);
+      transition:opacity .35s,transform .35s cubic-bezier(.22,.68,0,1.2);
+      pointer-events:none;overflow:hidden;
+    }
+    #info-panel.visible{opacity:1;transform:translateX(0);pointer-events:all}
+    .info-thumb{
+      width:100%;height:160px;overflow:hidden;
+      border-radius:12px 12px 0 0;
+      background:var(--linen);
+    }
+    .info-thumb img{width:100%;height:100%;object-fit:cover;object-position:var(--crop-x,50%) var(--crop-y,50%)}
+    .info-body{padding:16px}
+    .info-room{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .info-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--wood);margin-bottom:8px;line-height:1.2}
+    .info-desc{font-size:.8rem;line-height:1.65;color:var(--muted);margin-bottom:14px}
+    .info-meta{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+    .info-meta-row{display:flex;gap:6px;font-size:.72rem}
+    .info-meta-key{color:var(--muted);min-width:76px}
+    .info-meta-val{color:var(--wood);font-weight:500}
+    .info-close{
+      position:absolute;top:12px;right:12px;
+      width:28px;height:28px;border-radius:50%;
+      background:rgba(0,0,0,.3);color:#fff;
+      font-size:12px;display:flex;align-items:center;justify-content:center;
+      z-index:2;transition:background .2s;
+    }
+    .info-close:hover{background:rgba(0,0,0,.55)}
+    .info-cta{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;padding:11px;border-radius:10px;
+      background:var(--wood);color:#fff;
+      font-size:.78rem;font-weight:600;letter-spacing:.06em;
+      transition:background .2s;
+    }
+    .info-cta:hover{background:var(--wood-mid)}
+
+    /* ── Carousel ── */
+    #carousel{
+      position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+      z-index:60;display:flex;gap:10px;
+      padding:10px;
+      background:rgba(250,248,245,.92);
+      backdrop-filter:blur(16px);
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      max-width:calc(100vw - 40px);
+      overflow-x:auto;scrollbar-width:none;
+    }
+    #carousel::-webkit-scrollbar{display:none}
+    .car-item{
+      flex:0 0 auto;width:90px;border-radius:10px;
+      overflow:hidden;cursor:pointer;
+      border:2px solid transparent;
+      transition:border-color .2s,transform .2s;
+    }
+    .car-item:hover{transform:translateY(-3px)}
+    .car-item.active{border-color:var(--gold)}
+    .car-img{
+      width:90px;height:64px;object-fit:cover;
+      object-position:var(--cx,50%) var(--cy,50%);
+    }
+    .car-label{
+      padding:4px 6px 5px;font-size:.62rem;font-weight:500;
+      background:var(--bg);color:var(--wood);
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+
+    /* Quality filters */
+    body.quality-medium #room-img{filter:contrast(.92) saturate(.88)}
+    body.quality-low    #room-img{filter:contrast(.84) saturate(.72) blur(.5px) grayscale(.12)}
+
+    /* Film grain overlay */
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:8;opacity:0}
+    body.quality-medium #grain{opacity:.018}
+    body.quality-low    #grain{opacity:.035}
+  </style>
+</head>
+<body>
+
+<!-- Back button -->
+<button id="btn-back" onclick="goBack()">
+  <svg viewBox="0 0 20 20" fill="none"><path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  Back
+</button>
+
+<!-- Room tabs -->
+<div id="room-tabs"></div>
+
+<!-- Scene -->
+<div id="scene">
+  <img id="room-img" src="" alt="Room" draggable="false"/>
+  <div id="scene-vignette"></div>
+  <div id="select-box"><span class="sb-bl"></span><span class="sb-br"></span><span class="sb-inner"></span></div>
+  <!-- hotspots injected here -->
+</div>
+
+<!-- Film grain canvas -->
+<canvas id="grain"></canvas>
+
+<!-- Camera controls panel -->
+<div class="panel" id="cam-panel">
+  <div class="panel__handle" id="cam-handle">
+    <span class="panel__label">Camera Controls</span>
+    <div class="drag-dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="cam-row">
+    <label class="cam-label">Rotate <span id="rot-val">0°</span></label>
+    <input type="range" id="sl-rotate" min="-20" max="20" value="0" step="0.5"/>
+  </div>
+  <div class="cam-row">
+    <label class="cam-label">Tilt <span id="tilt-val">0°</span></label>
+    <input type="range" id="sl-tilt" min="-12" max="12" value="0" step="0.5"/>
+  </div>
+  <div class="cam-row">
+    <label class="cam-label">Zoom <span id="zoom-val">1.0×</span></label>
+    <input type="range" id="sl-zoom" min="100" max="180" value="100" step="1"/>
+  </div>
+  <div class="cam-divider"></div>
+  <div class="cam-quality">
+    <label class="cam-label">Quality</label>
+    <select id="sel-quality">
+      <option value="high">High — Full detail</option>
+      <option value="medium">Medium — Balanced</option>
+      <option value="low">Low — Film grain</option>
+    </select>
+  </div>
+</div>
+
+<!-- Info panel -->
+<div class="panel" id="info-panel">
+  <button class="info-close" id="info-close">✕</button>
+  <div class="panel__handle" id="info-handle">
+    <span class="panel__label" id="info-room-label">Living Room</span>
+    <div class="drag-dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="info-thumb">
+    <img id="info-thumb-img" src="" alt=""/>
+  </div>
+  <div class="info-body">
+    <p class="info-name" id="info-name"></p>
+    <p class="info-desc" id="info-desc"></p>
+    <div class="info-meta" id="info-meta"></div>
+    <button class="info-cta">Add to Wishlist ♡</button>
+  </div>
+</div>
+
+<!-- Product carousel -->
+<div id="carousel"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   ROOMS DATA
+   Each product: { id, label, x%, y%, w%, h%, cropX%, cropY%, desc, meta:{} }
+═══════════════════════════════════════════════════════════════ */
+const ROOMS = {
+
+  // ── IMAGE 1: Mountain great room — soaring ceilings, concrete fireplace, oak mantel ──
+  grand: {
+    label: 'Grand',
+    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=90&fit=crop',
+    products: [
+      { id:'sofa',      label:'Cream Boucle Sectional', x:42, y:74,
+        cropX:'42%', cropY:'70%',
+        desc:'Deep-seated cream boucle over a beech frame. Double-depth seat, modular add-ons available.',
+        meta:{ Materials:'Beech, boucle', Dimensions:'320 × 95 × 76 cm', Designer:'Atelier Lund', Price:'From $5,200' }},
+      { id:'fireplace', label:'Concrete Fireplace',     x:54, y:48,
+        cropX:'54%', cropY:'42%',
+        desc:'Cast in-situ concrete with a gas-log insert and a hand-selected oak mantel shelf.',
+        meta:{ Materials:'Cast concrete, solid oak', Dimensions:'W 140 cm', Designer:'Bespoke build', Price:'POA' }},
+      { id:'table',     label:'Dark Walnut Coffee Table',x:46, y:84,
+        cropX:'46%', cropY:'80%',
+        desc:'Dark-oiled walnut slab on a black powder-coated steel frame. Matte oil finish.',
+        meta:{ Materials:'Solid walnut, steel', Dimensions:'130 × 65 × 38 cm', Designer:'LuxeWood', Price:'From $1,100' }},
+      { id:'chair',     label:'Grey Lounge Chair',      x:22, y:68,
+        cropX:'22%', cropY:'64%',
+        desc:'Mid-century silhouette in slate mohair, solid walnut legs. Swivel base optional.',
+        meta:{ Materials:'Mohair, walnut', Dimensions:'78 × 80 × 84 cm', Designer:'Forme Studio', Price:'From $1,400' }},
+      { id:'plant',     label:'Fiddle Leaf Fig',        x:32, y:56,
+        cropX:'32%', cropY:'50%',
+        desc:'Ficus lyrata in a hand-thrown stoneware planter. Delivered at 150 cm. Care guide included.',
+        meta:{ Materials:'Live plant, stoneware', Dimensions:'H ~150 cm', Designer:'Studio Green', Price:'From $240' }},
+    ]
+  },
+
+  // ── IMAGE 2: Bohemian — olive sofa, Moroccan lantern, kilim rug, rattan chair ──
+  boho: {
+    label: 'Boho',
+    img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=90&fit=crop',
+    products: [
+      { id:'sofa',    label:'Olive Velvet Sofa',   x:28, y:68,
+        cropX:'28%', cropY:'64%',
+        desc:'Tufted olive velvet over solid hardwood. Rolled arms, tapered walnut legs, down-wrapped cushions.',
+        meta:{ Materials:'Hardwood, cotton velvet', Dimensions:'210 × 88 × 82 cm', Designer:'LuxeWood', Price:'From $2,600' }},
+      { id:'pendant', label:'Moroccan Brass Lantern',x:52, y:16,
+        cropX:'52%', cropY:'14%',
+        desc:'Hand-pierced brass with warm amber glass panels. Casts a constellation of warm light.',
+        meta:{ Materials:'Brass, amber glass', Dimensions:'H 62 cm', Designer:'Medina Crafts', Price:'From $380' }},
+      { id:'trunk',   label:'Carved Trunk Table',  x:46, y:72,
+        cropX:'46%', cropY:'68%',
+        desc:'Reclaimed elm chest with hand-carved relief panels. Functions as coffee table and storage.',
+        meta:{ Materials:'Reclaimed elm', Dimensions:'120 × 65 × 46 cm', Designer:'Artisan Studio', Price:'From $1,600' }},
+      { id:'rug',     label:'Kilim Area Rug',       x:44, y:88,
+        cropX:'44%', cropY:'84%',
+        desc:'Hand-knotted wool kilim in earthy reds and ochres. Each one is unique.',
+        meta:{ Materials:'Hand-knotted wool', Dimensions:'250 × 350 cm', Designer:'Oaxacan collective', Price:'From $1,200' }},
+      { id:'shelf',   label:'Orange Display Shelf', x:72, y:50,
+        cropX:'72%', cropY:'46%',
+        desc:'Painted alcove shelving in burnt sienna with solid oak planks. Built-in unit.',
+        meta:{ Materials:'MDF, solid oak, paint', Dimensions:'W 90, H 240 cm', Designer:'LuxeWood', Price:'From $2,200' }},
+    ]
+  },
+
+  // ── IMAGE 3: Contemporary — cream sectional, walnut bench table, bookshelf, TV ──
+  nordic: {
+    label: 'Nordic',
+    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1600&q=90&fit=crop',
+    products: [
+      { id:'sofa',    label:'Cream L-Sectional',   x:38, y:70,
+        cropX:'38%', cropY:'66%',
+        desc:'Performance-linen upholstery in warm cream. L-shape with reversible chaise, removable covers.',
+        meta:{ Materials:'Kiln-dried hardwood, linen', Dimensions:'295 × 175 × 78 cm', Designer:'Studio Naess', Price:'From $4,100' }},
+      { id:'table',   label:'Walnut Bench Table',  x:45, y:80,
+        cropX:'45%', cropY:'76%',
+        desc:'Live-edge walnut slab on simple steel trestle legs. Raw oil finish preserves the grain.',
+        meta:{ Materials:'Live-edge walnut, steel', Dimensions:'140 × 55 × 40 cm', Designer:'LuxeWood', Price:'From $1,380' }},
+      { id:'bookshelf',label:'Walnut Bookshelf',   x:56, y:52,
+        cropX:'56%', cropY:'48%',
+        desc:'Open-back walnut bookcase with adjustable shelves. Sits freestanding or mounts to wall.',
+        meta:{ Materials:'Solid walnut', Dimensions:'90 × 35 × 180 cm', Designer:'LuxeWood', Price:'From $1,900' }},
+      { id:'tvunit',  label:'Walnut Media Console',x:80, y:68,
+        cropX:'80%', cropY:'64%',
+        desc:'Low-profile walnut console with push-to-open doors and cable management.',
+        meta:{ Materials:'Solid walnut, steel', Dimensions:'200 × 45 × 50 cm', Designer:'LuxeWood', Price:'From $2,100' }},
+      { id:'pendant', label:'Brass Drum Pendant',  x:50, y:18,
+        cropX:'50%', cropY:'16%',
+        desc:'Brushed brass cylinder with a frosted diffuser. 3000 K LED module. Dimmable.',
+        meta:{ Materials:'Brass, frosted glass, LED', Dimensions:'Ø 40, H 22 cm', Designer:'Forme Studio', Price:'From $520' }},
+    ]
+  },
+
+  // ── IMAGE 4: Scandi-Warm — grey sectional, marble coffee table, TV wall, floor lamp ──
+  scandi: {
+    label: 'Scandi',
+    img: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=1600&q=90&fit=crop',
+    products: [
+      { id:'sofa',    label:'Grey Linen Sectional', x:55, y:68,
+        cropX:'55%', cropY:'64%',
+        desc:'Deep-pile grey linen in an L-configuration. Feather-and-foam seat. Steel pin legs.',
+        meta:{ Materials:'Linen, steel', Dimensions:'310 × 170 × 80 cm', Designer:'Studio Naess', Price:'From $4,600' }},
+      { id:'coffee',  label:'Marble Coffee Table',  x:52, y:80,
+        cropX:'52%', cropY:'76%',
+        desc:'Honed Carrara marble top on a blackened steel frame. Matte, fingerprint-resistant.',
+        meta:{ Materials:'Carrara marble, steel', Dimensions:'120 × 60 × 38 cm', Designer:'LuxeWood', Price:'From $1,800' }},
+      { id:'tvunit',  label:'Oak Media Console',    x:14, y:70,
+        cropX:'14%', cropY:'66%',
+        desc:'Solid oak with cane-front doors and an integrated power strip. Sits low at 45 cm.',
+        meta:{ Materials:'Solid oak, cane', Dimensions:'200 × 42 × 45 cm', Designer:'LuxeWood', Price:'From $1,950' }},
+      { id:'lamp',    label:'Arc Floor Lamp',       x:18, y:45,
+        cropX:'18%', cropY:'40%',
+        desc:'Articulated matte black arm on a marble base. Cone shade, warm 2700 K LED.',
+        meta:{ Materials:'Steel, marble, LED', Dimensions:'H 178 cm', Designer:'Forme Studio', Price:'From $580' }},
+      { id:'chair',   label:'Tan Leather Armchair', x:30, y:65,
+        cropX:'30%', cropY:'60%',
+        desc:'Full-grain tan leather on a solid walnut frame. High back, feather-blend cushion.',
+        meta:{ Materials:'Full-grain leather, walnut', Dimensions:'76 × 82 × 90 cm', Designer:'Atelier Lund', Price:'From $1,700' }},
+    ]
+  },
+
+  // ── IMAGE 5: Organic — curved sculptural ceiling, grey sectional, marble table ──
+  organic: {
+    label: 'Organic',
+    img: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&q=90&fit=crop',
+    products: [
+      { id:'sofa',    label:'Grey Modular Sofa',   x:60, y:70,
+        cropX:'60%', cropY:'66%',
+        desc:'Modular grey sofa system in soft chenille. Reconfigure as your room evolves.',
+        meta:{ Materials:'Kiln-dried oak, chenille', Dimensions:'340 × 105 × 78 cm', Designer:'Forme Studio', Price:'From $5,800' }},
+      { id:'table',   label:'Black Marble Table',  x:52, y:80,
+        cropX:'52%', cropY:'76%',
+        desc:'Honed black marble on an oak-wrapped plinth base. Bold and grounded.',
+        meta:{ Materials:'Black marble, oak', Dimensions:'130 × 70 × 38 cm', Designer:'LuxeWood', Price:'From $2,400' }},
+      { id:'tvunit',  label:'Oak TV Console',      x:14, y:68,
+        cropX:'14%', cropY:'64%',
+        desc:'Wide oak sideboard with push-to-open doors and cable management tray.',
+        meta:{ Materials:'Solid oak', Dimensions:'220 × 45 × 50 cm', Designer:'LuxeWood', Price:'From $2,100' }},
+      { id:'chair',   label:'Cognac Accent Chair',  x:36, y:65,
+        cropX:'36%', cropY:'60%',
+        desc:'Cognac leather bucket chair on a gold steel base. Statement piece for any corner.',
+        meta:{ Materials:'Leather, gold steel', Dimensions:'72 × 78 × 86 cm', Designer:'Atelier Lund', Price:'From $1,500' }},
+      { id:'shelf',   label:'Wall Shelving System', x:82, y:48,
+        cropX:'82%', cropY:'44%',
+        desc:'Floating oak shelves on a powder-coated steel rail system. Fully adjustable.',
+        meta:{ Materials:'Solid oak, steel', Dimensions:'W 160, H 200 cm', Designer:'LuxeWood', Price:'From $1,400' }},
+    ]
+  },
+
+  bedroom: {
+    label: 'Bedroom',
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=90&fit=crop',
+    products: [
+      { id:'bed',       label:'Platform Bed',       x:50, y:66, w:40, h:28,
+        cropX:'50%', cropY:'62%',
+        desc:'Low-profile walnut frame with floating base. Available UK King and Super King.',
+        meta:{ Materials:'Solid walnut', Dimensions:'200 × 180 × 30 cm', Designer:'LuxeWood', Price:'From $2,800' }},
+      { id:'nightstand',label:'Floating Nightstand', x:88, y:66, w:10, h:14,
+        cropX:'88%', cropY:'62%',
+        desc:'Oiled oak floating shelf with single soft-close drawer. Mounts flush to wall.',
+        meta:{ Materials:'Oiled oak', Dimensions:'50 × 35 × 14 cm', Designer:'LuxeWood', Price:'From $480 each' }},
+      { id:'lamp',      label:'Ceramic Table Lamp',  x:84, y:50, w:8,  h:16,
+        cropX:'84%', cropY:'48%',
+        desc:'Hand-thrown ceramic base in bone white, linen shade. 2400 K warm light.',
+        meta:{ Materials:'Ceramic, linen, LED', Dimensions:'H 48 cm', Designer:'Thrown Studio', Price:'From $180 each' }},
+    ]
+  },
+  dining: {
+    label: 'Dining',
+    img: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1600&q=90&fit=crop',
+    products: [
+      { id:'table',   label:'Oak Dining Table',   x:48, y:70, w:38, h:22,
+        cropX:'48%', cropY:'65%',
+        desc:'7 cm solid white oak slab, hand-planed edges. Seats 8 comfortably.',
+        meta:{ Materials:'Solid white oak', Dimensions:'240 × 100 × 76 cm', Designer:'LuxeWood', Price:'From $3,200' }},
+      { id:'chair',   label:'Walnut Dining Chair', x:28, y:72, w:12, h:22,
+        cropX:'28%', cropY:'68%',
+        desc:'Turned walnut legs, padded seat in performance linen. Stackable.',
+        meta:{ Materials:'Walnut, linen', Dimensions:'50 × 54 × 84 cm', Designer:'LuxeWood', Price:'From $420 each' }},
+      { id:'pendant', label:'Rattan Pendant',      x:48, y:22, w:14, h:24,
+        cropX:'48%', cropY:'20%',
+        desc:'Hand-woven natural rattan. Warm-white bulb included.',
+        meta:{ Materials:'Natural rattan, LED', Dimensions:'Ø 45 cm', Designer:'Woven Co.', Price:'From $260' }},
+    ]
+  }
+}
+
+/* ── Hash → room key mapping ── */
+const HASH_MAP = {
+  'grand':'grand','boho':'boho','nordic':'nordic','scandi':'scandi','organic':'organic',
+  'bedroom':'bedroom','dining':'dining',
+  // legacy aliases from collection page style IDs
+  'minimal':'nordic','classy':'grand','modern':'boho','rustic':'scandi',
+  'living':'grand','living-room':'grand','living2':'grand',
+  'living3':'nordic','living4':'scandi','living5':'grand','living6':'boho',
+}
+
+/* ── State ── */
+let currentRoom = 'grand'
+let activeProduct = null
+let camState = { rotate:0, tilt:0, zoom:100 }
+let targetCam  = { rotate:0, tilt:0, zoom:100 }
+let rafId
+
+/* ═══════════════════ INIT ═══════════════════ */
+function init() {
+  // Read URL hash
+  const hash = location.hash.replace('#','')
+  if (hash && HASH_MAP[hash]) currentRoom = HASH_MAP[hash]
+
+  buildTabs()
+  loadRoom(currentRoom)
+  setupCamera()
+  setupDrag('cam-panel','cam-handle')
+  setupDrag('info-panel','info-handle')
+  document.getElementById('info-close').addEventListener('click', closeInfo)
+  buildGrain()
+  startCamLoop()
+}
+
+/* ═══════════════════ TABS ═══════════════════ */
+function buildTabs() {
+  const bar = document.getElementById('room-tabs')
+  bar.innerHTML = ''
+  Object.entries(ROOMS).forEach(([key,room]) => {
+    const btn = document.createElement('button')
+    btn.className = 'room-tab' + (key === currentRoom ? ' active' : '')
+    btn.textContent = room.label
+    btn.addEventListener('click', () => switchRoom(key))
+    bar.appendChild(btn)
+  })
+}
+
+function switchRoom(key) {
+  currentRoom = key
+  location.hash = key
+  document.querySelectorAll('.room-tab').forEach(t => t.classList.toggle('active', t.textContent === ROOMS[key].label))
+  loadRoom(key)
+}
+
+/* ═══════════════════ LOAD ROOM ═══════════════════ */
+function loadRoom(key) {
+  const room = ROOMS[key]
+  const img = document.getElementById('room-img')
+  img.src = room.img
+  activeProduct = null
+
+  // Remove old hotspots
+  document.querySelectorAll('.hotspot').forEach(h => h.remove())
+  hideSelectBox()
+  closeInfo()
+
+  // Build hotspots
+  room.products.forEach(p => {
+    const hs = document.createElement('div')
+    hs.className = 'hotspot'
+    hs.id = 'hs-' + p.id
+    hs.style.left = p.x + '%'
+    hs.style.top  = p.y + '%'
+    hs.innerHTML  = '<div class="hotspot__ring"></div><div class="hotspot__dot"></div>'
+    hs.addEventListener('click', () => selectProduct(p))
+    document.getElementById('scene').appendChild(hs)
+  })
+
+  buildCarousel(room)
+}
+
+/* ═══════════════════ SELECT PRODUCT ═══════════════════ */
+function selectProduct(p) {
+  if (activeProduct === p) { closeInfo(); return }
+  activeProduct = p
+
+  // Hotspot states
+  document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'))
+  document.getElementById('hs-' + p.id)?.classList.add('active')
+
+  // Carousel active
+  document.querySelectorAll('.car-item').forEach(c => c.classList.toggle('active', c.dataset.id === p.id))
+
+  // Selection box — centred on hotspot dot
+  showSelectBox(p)
+
+  // Info panel
+  showInfo(p)
+}
+
+function showSelectBox(p) {
+  const box   = document.getElementById('select-box')
+  const scene = document.getElementById('scene')
+  // Resolve the hotspot's pixel position exactly
+  const hs = document.getElementById('hs-' + p.id)
+  let cx, cy
+  if (hs) {
+    const hr = hs.getBoundingClientRect()
+    const sr = scene.getBoundingClientRect()
+    cx = hr.left + hr.width  / 2 - sr.left
+    cy = hr.top  + hr.height / 2 - sr.top
+  } else {
+    cx = p.x / 100 * scene.offsetWidth
+    cy = p.y / 100 * scene.offsetHeight
+  }
+  // Fixed 90×90 reticle, centred on the dot
+  const half = 45
+  box.style.left = (cx - half) + 'px'
+  box.style.top  = (cy - half) + 'px'
+  box.classList.add('visible')
+}
+
+function hideSelectBox() {
+  document.getElementById('select-box').classList.remove('visible')
+}
+
+function showInfo(p) {
+  const panel = document.getElementById('info-panel')
+  document.getElementById('info-room-label').textContent = ROOMS[currentRoom].label
+  document.getElementById('info-name').textContent  = p.label
+  document.getElementById('info-desc').textContent  = p.desc
+
+  // Thumb: use room image cropped to product area
+  const thumb = document.getElementById('info-thumb-img')
+  thumb.src = ROOMS[currentRoom].img.replace('w=1600','w=600')
+  thumb.style.objectPosition = `${p.cropX} ${p.cropY}`
+
+  // Meta rows
+  const meta = document.getElementById('info-meta')
+  meta.innerHTML = Object.entries(p.meta).map(([k,v]) =>
+    `<div class="info-meta-row"><span class="info-meta-key">${k}</span><span class="info-meta-val">${v}</span></div>`
+  ).join('')
+
+  panel.classList.add('visible')
+}
+
+function closeInfo() {
+  document.getElementById('info-panel').classList.remove('visible')
+  document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'))
+  document.querySelectorAll('.car-item').forEach(c => c.classList.remove('active'))
+  hideSelectBox()
+  activeProduct = null
+}
+
+/* ═══════════════════ CAROUSEL ═══════════════════ */
+function buildCarousel(room) {
+  const car = document.getElementById('carousel')
+  car.innerHTML = ''
+  room.products.forEach(p => {
+    const item = document.createElement('div')
+    item.className = 'car-item'
+    item.dataset.id = p.id
+    item.innerHTML = `
+      <img class="car-img" src="${room.img.replace('w=1600','w=300')}" alt="${p.label}"
+           style="--cx:${p.cropX};--cy:${p.cropY}"/>
+      <div class="car-label">${p.label}</div>
+    `
+    item.addEventListener('click', () => selectProduct(p))
+    car.appendChild(item)
+  })
+}
+
+/* ═══════════════════ CAMERA ═══════════════════ */
+function setupCamera() {
+  const slR = document.getElementById('sl-rotate')
+  const slT = document.getElementById('sl-tilt')
+  const slZ = document.getElementById('sl-zoom')
+
+  slR.addEventListener('input', () => {
+    targetCam.rotate = +slR.value
+    document.getElementById('rot-val').textContent = slR.value + '°'
+  })
+  slT.addEventListener('input', () => {
+    targetCam.tilt = +slT.value
+    document.getElementById('tilt-val').textContent = slT.value + '°'
+  })
+  slZ.addEventListener('input', () => {
+    targetCam.zoom = +slZ.value
+    document.getElementById('zoom-val').textContent = (slZ.value/100).toFixed(1) + '×'
+  })
+
+  document.getElementById('sel-quality').addEventListener('change', e => {
+    document.body.className = document.body.className.replace(/quality-\w+/g,'')
+    if (e.target.value !== 'high') document.body.classList.add('quality-' + e.target.value)
+  })
+}
+
+function startCamLoop() {
+  const lerp = (a,b,t) => a + (b-a)*t
+  const img = document.getElementById('room-img')
+  function tick() {
+    rafId = requestAnimationFrame(tick)
+    camState.rotate = lerp(camState.rotate, targetCam.rotate, 0.08)
+    camState.tilt   = lerp(camState.tilt,   targetCam.tilt,   0.08)
+    camState.zoom   = lerp(camState.zoom,    targetCam.zoom,   0.08)
+    const scale = camState.zoom / 100
+    img.style.transform = `scale(${scale}) rotateY(${camState.rotate * 0.4}deg) rotateX(${camState.tilt * 0.4}deg)`
+  }
+  tick()
+}
+
+/* ═══════════════════ DRAG PANELS ═══════════════════ */
+function setupDrag(panelId, handleId) {
+  const panel  = document.getElementById(panelId)
+  const handle = document.getElementById(handleId)
+  let ox=0,oy=0,px=0,py=0,dragging=false
+
+  handle.addEventListener('mousedown', e => {
+    dragging = true
+    const rect = panel.getBoundingClientRect()
+    ox = e.clientX - rect.left
+    oy = e.clientY - rect.top
+    panel.style.transition = 'none'
+    e.preventDefault()
+  })
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return
+    px = e.clientX - ox
+    py = e.clientY - oy
+    px = Math.max(0, Math.min(px, window.innerWidth  - panel.offsetWidth))
+    py = Math.max(0, Math.min(py, window.innerHeight - panel.offsetHeight))
+    panel.style.left = px + 'px'
+    panel.style.top  = py + 'px'
+    panel.style.right = 'auto'
+  })
+  document.addEventListener('mouseup', () => { dragging = false })
+}
+
+/* ═══════════════════ BACK BUTTON ═══════════════════ */
+function goBack() {
+  if (document.referrer && document.referrer.includes(location.hostname)) {
+    history.back()
+  } else {
+    // Fallback: go to main app with room collection open
+    window.location.href = '/?room=' + currentRoom
+  }
+}
+
+/* ═══════════════════ FILM GRAIN ═══════════════════ */
+function buildGrain() {
+  const c = document.getElementById('grain')
+  const ctx = c.getContext('2d')
+  c.width = 256; c.height = 256
+  function draw() {
+    const id = ctx.createImageData(256,256)
+    for (let i=0;i<id.data.length;i+=4) {
+      const v = Math.random()*255|0
+      id.data[i]=id.data[i+1]=id.data[i+2]=v; id.data[i+3]=28
+    }
+    ctx.putImageData(id,0,0)
+    c.style.backgroundImage = `url(${c.toDataURL()})`
+    c.style.backgroundRepeat = 'repeat'
+    c.style.width = '100%'; c.style.height = '100%'
+    setTimeout(draw, 80)
+  }
+  draw()
+}
+
+init()
+</script>
+</body>
+</html>

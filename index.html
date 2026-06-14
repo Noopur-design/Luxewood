@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>LuxeWood — Bespoke Interior Design in India</title>
+  <meta name="description" content="LuxeWood designs warm, bespoke interiors for living rooms, bedrooms, kitchens and workspaces across Mumbai, Delhi NCR and Bengaluru. Request a personalised quotation."/>
+  <meta name="theme-color" content="#2A1A12"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="apple-touch-icon" href="/favicon.svg"/>
+  <!-- Social share preview -->
+  <meta property="og:title" content="LuxeWood — Bespoke Interior Design"/>
+  <meta property="og:description" content="Spaces that feel like you. Bespoke interiors across India."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor"><div id="cursor-dot"></div></div>
+
+  <!-- ══ NAV ═══════════════════════════════════════════════════════════════ -->
+  <nav id="site-nav">
+    <a class="nav-logo" href="#">Luxe<span>Wood</span></a>
+    <ul class="nav-links">
+      <li><a href="#/collection/living-room" data-room="living-room">Living Room</a></li>
+      <li><a href="#/collection/bedroom"     data-room="bedroom">Bedroom</a></li>
+      <li><a href="#/collection/dining"      data-room="dining">Dining</a></li>
+      <li><a href="#/collection/home-office" data-room="home-office">Home Office</a></li>
+      <li><a href="#/collection/kitchen"     data-room="kitchen">Kitchen</a></li>
+    </ul>
+    <button class="nav-cta" data-magnetic>Request Quote</button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+    <ul class="nav-drawer-links">
+      <li><a href="#/collection/living-room" data-room="living-room">Living Room</a></li>
+      <li><a href="#/collection/bedroom"     data-room="bedroom">Bedroom</a></li>
+      <li><a href="#/collection/dining"      data-room="dining">Dining</a></li>
+      <li><a href="#/collection/home-office" data-room="home-office">Home Office</a></li>
+      <li><a href="#/collection/kitchen"     data-room="kitchen">Kitchen</a></li>
+    </ul>
+    <button class="nav-drawer-cta">Request Quote</button>
+  </div>
+  <div class="nav-drawer-backdrop" id="nav-backdrop"></div>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <!-- WebGL canvas mounts here; img is the CSS fallback -->
+    <div id="hero-canvas">
+      <img id="hero-img-fallback"
+        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&q=90&fit=crop"
+        alt="Luxury living room"
+        fetchpriority="high"/>
+    </div>
+    <div class="hero-gradient"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-split>Bespoke Interior Design &middot; Est.&nbsp;2009</p>
+      <h1 class="hero-title">
+        <span class="hero-line" data-split>Spaces that</span>
+        <em  class="hero-line hero-line--em" data-split>feel like you.</em>
+      </h1>
+      <p class="hero-sub" data-split>Bespoke interiors for living rooms, bedrooms, kitchens, and workspaces — designed around your life.</p>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="hero-bar">
+      <div class="hero-btns">
+        <button class="hero-cta hero-cta--primary" id="hero-explore" data-magnetic>
+          <span>View Our Designs</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <a href="https://wa.me/919910809899?text=Hi%20LuxeWood!%20I'd%20like%20to%20book%20a%20free%20design%20consultation." class="hero-cta hero-cta--ghost" target="_blank" rel="noopener noreferrer" data-magnetic>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:-2px"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"><div class="hero-scroll-fill"></div></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ MARQUEE ════════════════════════════════════════════════════════ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Solid Oak</span><span class="mdot">·</span>
+      <span>Hand-Stitched Leather</span><span class="mdot">·</span>
+      <span>Walnut &amp; Ash</span><span class="mdot">·</span>
+      <span>FSC Certified</span><span class="mdot">·</span>
+      <span>Lifetime Guarantee</span><span class="mdot">·</span>
+      <span>White-Glove Delivery</span><span class="mdot">·</span>
+      <span>Bespoke Orders</span><span class="mdot">·</span>
+      <span>Solid Oak</span><span class="mdot">·</span>
+      <span>Hand-Stitched Leather</span><span class="mdot">·</span>
+      <span>Walnut &amp; Ash</span><span class="mdot">·</span>
+      <span>FSC Certified</span><span class="mdot">·</span>
+      <span>Lifetime Guarantee</span><span class="mdot">·</span>
+      <span>White-Glove Delivery</span><span class="mdot">·</span>
+      <span>Bespoke Orders</span><span class="mdot">·</span>
+    </div>
+  </div>
+
+  <!-- ══ STATS BAR ═══════════════════════════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item">
+        <span class="stat-n" data-count="1200" data-suffix="+">0</span>
+        <span class="stat-l">Projects Completed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-n">₹45Cr<sup>+</sup></span>
+        <span class="stat-l">Furniture Designed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-n" data-count="15" data-suffix="+">0</span>
+        <span class="stat-l">Design Awards</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-n" data-count="48">0</span>
+        <span class="stat-l">Countries Served</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HOW WE DESIGN YOUR SPACE ══════════════════════════════════════════ -->
+  <section id="rooms" class="ds-section">
+
+    <!-- ① PROCESS — Vistara-style alternating phases ──────────── -->
+    <div class="ds-process">
+      <div class="ds-process-head">
+        <p class="section-eyebrow" data-reveal>Our Philosophy</p>
+        <h2 class="ds-process-title" data-split-reveal>How We <em>Design Your Space</em></h2>
+        <p class="ds-process-sub" data-reveal>A seamless fusion of contemporary precision and ancestral artistry. We guide you through a four-stage transformation — designed for the discerning home.</p>
+      </div>
+
+      <!-- 5-step process cards -->
+      <div class="ds-steps-grid">
+
+        <div class="ds-step-card reveal-up" style="--si:0">
+          <div class="ds-step-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M13 20a7 7 0 1014 0 7 7 0 00-14 0z" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M20 13v2M20 25v2M13 20h2M25 20h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="ds-step-num">01</span>
+          <h3 class="ds-step-title">Discover</h3>
+          <p class="ds-step-desc">We listen first: your lifestyle, habits, budget, and the feeling you want your home to have. No templates — just you.</p>
+        </div>
+
+        <div class="ds-step-card reveal-up" style="--si:1">
+          <div class="ds-step-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="8" width="28" height="24" rx="2" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M12 14h8M12 19h16M12 24h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="28" cy="14" r="3" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <span class="ds-step-num">02</span>
+          <h3 class="ds-step-title">Mood Board</h3>
+          <p class="ds-step-desc">We translate your taste into a curated mood board: color palette, textures, materials, and reference imagery, so you can <em>see</em> the direction before anything is bought.</p>
+        </div>
+
+        <div class="ds-step-card reveal-up" style="--si:2">
+          <div class="ds-step-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="10" width="32" height="22" rx="2" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4 16h32" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M14 22h12M14 26h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="9" cy="13" r="1.5" fill="currentColor"/>
+              <circle cx="14" cy="13" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="ds-step-num">03</span>
+          <h3 class="ds-step-title">Concept &amp; 3D Visuals</h3>
+          <p class="ds-step-desc">Photorealistic renders of your actual room layout, so there are no surprises. You approve every detail before a single item is ordered.</p>
+        </div>
+
+        <div class="ds-step-card reveal-up" style="--si:3">
+          <div class="ds-step-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 10h24M8 10v20a2 2 0 002 2h20a2 2 0 002-2V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M15 10V8a5 5 0 0110 0v2" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="ds-step-num">04</span>
+          <h3 class="ds-step-title">Curated Shopping List</h3>
+          <p class="ds-step-desc">Every piece in the design is linked to a real product — Amazon, IKEA, Wayfair, West Elm — with live prices, so you can buy exactly what you see.</p>
+        </div>
+
+        <div class="ds-step-card reveal-up" style="--si:4">
+          <div class="ds-step-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 28l6-6 4 4 8-10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="20" cy="16" r="10" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M20 6v2M20 24v2M10 16H8M32 16h-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="ds-step-num">05</span>
+          <h3 class="ds-step-title">Style &amp; Reveal</h3>
+          <p class="ds-step-desc">We oversee delivery, placement, and final styling down to the last cushion. Your home, exactly as imagined — ready to walk into.</p>
+        </div>
+
+      </div><!-- /ds-steps-grid -->
+
+      <div class="ds-process-cta-box">
+        <p>Ready to start your journey?</p>
+        <div class="ds-process-cta-wrap">
+          <a href="mailto:hello@luxewood.com?subject=Design Consultation" class="ds-btn-terra">
+            Book Consultation · Free
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#/collection/living-room" class="ds-btn-ghost-terra">Explore All Spaces</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② MOOD BOARD SHOWCASE ──────────────────────────── -->
+    <div class="ds-mb-section">
+      <div class="ds-mb-head">
+        <p class="section-eyebrow" data-reveal>The Design Process</p>
+        <h2 class="ds-mb-title" data-split-reveal>From Mood Board <em>to Reality.</em></h2>
+        <p class="ds-mb-intro" data-reveal>Every project starts with a mood board. It is how we agree on a direction together — colors, materials, and mood — before a single rupee is spent on furniture.</p>
+      </div>
+
+      <div class="ds-mb-pairs">
+
+        <!-- Pair 1: Japandi -->
+        <div class="ds-mb-pair reveal-up">
+          <div class="ds-mb-card ds-mb-card--board">
+            <div class="ds-mb-collage">
+              <img class="ds-mb-swatch ds-mb-swatch--a" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=300&q=80&fit=crop" alt="Terracotta sofa swatch"/>
+              <img class="ds-mb-swatch ds-mb-swatch--b" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&q=80&fit=crop" alt="Accent armchair and art"/>
+              <img class="ds-mb-swatch ds-mb-swatch--c" src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=300&q=80&fit=crop" alt="Plant on wooden bench"/>
+              <img class="ds-mb-swatch ds-mb-swatch--d" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=300&q=80&fit=crop" alt="Warm neutral interior"/>
+            </div>
+            <div class="ds-mb-palette-strip">
+              <span style="background:#D4C5B2"></span>
+              <span style="background:#8B7355"></span>
+              <span style="background:#F5F0E8"></span>
+              <span style="background:#3D3530"></span>
+              <span style="background:#B8A898"></span>
+            </div>
+            <p class="ds-mb-card-label">Mood Board</p>
+          </div>
+          <div class="ds-mb-arrow" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16h20M19 9l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ds-mb-card ds-mb-card--render">
+            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=700&q=88&fit=crop" alt="Japandi living room render" loading="lazy"/>
+            <p class="ds-mb-card-label">Final Render</p>
+          </div>
+          <p class="ds-mb-caption">Warm Modern Living Room — tan leather, sage green, natural light</p>
+        </div>
+
+        <!-- Pair 2: Modern Luxe Bedroom -->
+        <div class="ds-mb-pair ds-mb-pair--flip reveal-up">
+          <div class="ds-mb-card ds-mb-card--render">
+            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=88&fit=crop" alt="Hotel suite bedroom render" loading="lazy"/>
+            <p class="ds-mb-card-label">Final Render</p>
+          </div>
+          <div class="ds-mb-arrow ds-mb-arrow--rev" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16h20M19 9l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="ds-mb-card ds-mb-card--board">
+            <div class="ds-mb-collage">
+              <img class="ds-mb-swatch ds-mb-swatch--a" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=300&q=80&fit=crop" alt="Dark bedroom detail"/>
+              <img class="ds-mb-swatch ds-mb-swatch--b" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80&fit=crop" alt="Bed detail"/>
+              <img class="ds-mb-swatch ds-mb-swatch--c" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300&q=80&fit=crop" alt="Bedroom mood"/>
+              <img class="ds-mb-swatch ds-mb-swatch--d" src="https://images.unsplash.com/photo-1588046130717-0eb0c9a3ba15?w=300&q=80&fit=crop" alt="Material"/>
+            </div>
+            <div class="ds-mb-palette-strip">
+              <span style="background:#1A1A2E"></span>
+              <span style="background:#C9A96E"></span>
+              <span style="background:#2D2D44"></span>
+              <span style="background:#F0EBE3"></span>
+              <span style="background:#8B7355"></span>
+            </div>
+            <p class="ds-mb-card-label">Mood Board</p>
+          </div>
+          <p class="ds-mb-caption">Hotel Suite Bedroom — deep indigo, brass, linen layers</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ③ BEFORE & AFTER ──────────────────────────────── -->
+    <div class="ds-ba-section">
+      <div class="ds-ba-head">
+        <p class="section-eyebrow" data-reveal>Real Transformations</p>
+        <h2 class="ds-ba-title" data-split-reveal>Before <em>&amp;</em> After</h2>
+        <p class="ds-ba-sub" data-reveal>Three spaces. Completely reimagined. Shop the exact pieces used.</p>
+      </div>
+
+      <!-- BA 1: Living Room -->
+      <article class="ds-ba-item reveal-up">
+        <div class="ds-ba-before">
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&q=80&fit=crop" alt="Before — plain living room" loading="lazy"/>
+          <div class="ds-ba-before-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--before">Before</div>
+          <div class="ds-ba-before-info">
+            <span>Empty open-plan — no focal point, no warmth</span>
+          </div>
+        </div>
+
+        <div class="ds-ba-divider">
+          <div class="ds-ba-divider-line"></div>
+          <div class="ds-ba-divider-pill">
+            <span class="ds-ba-divider-room">Maharaja Classic</span>
+            <span class="ds-ba-divider-label">Living Room</span>
+          </div>
+          <div class="ds-ba-divider-line"></div>
+        </div>
+
+        <div class="ds-ba-after">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=90&fit=crop" alt="After — Grand Classic living room" loading="lazy"/>
+          <div class="ds-ba-after-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--after">After</div>
+          <div class="ds-ba-shop">
+            <p class="ds-ba-shop-label">Shop this look</p>
+            <ul class="ds-ba-links">
+              <li><a href="https://www.westelm.com/shop/furniture/sofas-sectionals/" target="_blank" rel="noopener">Heritage Sofa — West Elm <span>↗</span></a></li>
+              <li><a href="https://www.cb2.com/furniture/coffee-tables" target="_blank" rel="noopener">Oak Coffee Table — CB2 <span>↗</span></a></li>
+              <li><a href="https://www.restorationhardware.com/catalog/category/rooms.jsp?categoryId=cat13130068" target="_blank" rel="noopener">Arch Floor Lamp — RH <span>↗</span></a></li>
+              <li><a href="https://www.article.com/category/living-room/chairs" target="_blank" rel="noopener">Lounge Chair — Article <span>↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- BA 2: Bedroom -->
+      <article class="ds-ba-item ds-ba-item--flip reveal-up">
+        <div class="ds-ba-before">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80&fit=crop" alt="Before — basic bedroom" loading="lazy"/>
+          <div class="ds-ba-before-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--before">Before</div>
+          <div class="ds-ba-before-info">
+            <span>Generic builder-grade bedroom — no personality</span>
+          </div>
+        </div>
+
+        <div class="ds-ba-divider">
+          <div class="ds-ba-divider-line"></div>
+          <div class="ds-ba-divider-pill">
+            <span class="ds-ba-divider-room">Serene Retreat</span>
+            <span class="ds-ba-divider-label">Bedroom</span>
+          </div>
+          <div class="ds-ba-divider-line"></div>
+        </div>
+
+        <div class="ds-ba-after">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=90&fit=crop" alt="After — Serene Retreat bedroom" loading="lazy"/>
+          <div class="ds-ba-after-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--after">After</div>
+          <div class="ds-ba-shop">
+            <p class="ds-ba-shop-label">Shop this look</p>
+            <ul class="ds-ba-links">
+              <li><a href="https://www.westelm.com/shop/furniture/beds-headboards/" target="_blank" rel="noopener">Platform Bed Frame — West Elm <span>↗</span></a></li>
+              <li><a href="https://www.anthropologie.com/bedding" target="_blank" rel="noopener">Linen Bedding Set — Anthropologie <span>↗</span></a></li>
+              <li><a href="https://www.cb2.com/furniture/nightstands" target="_blank" rel="noopener">Oak Nightstand — CB2 <span>↗</span></a></li>
+              <li><a href="https://www.potterybarn.com/shop/lighting/table-lamps/" target="_blank" rel="noopener">Ceramic Table Lamp — Pottery Barn <span>↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- BA 3: Dining Room -->
+      <article class="ds-ba-item reveal-up">
+        <div class="ds-ba-before">
+          <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&q=80&fit=crop" alt="Before — plain dining space" loading="lazy"/>
+          <div class="ds-ba-before-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--before">Before</div>
+          <div class="ds-ba-before-info">
+            <span>Bare dining room — mismatched pieces, poor lighting</span>
+          </div>
+        </div>
+
+        <div class="ds-ba-divider">
+          <div class="ds-ba-divider-line"></div>
+          <div class="ds-ba-divider-pill">
+            <span class="ds-ba-divider-room">Heritage Dining</span>
+            <span class="ds-ba-divider-label">Dining Room</span>
+          </div>
+          <div class="ds-ba-divider-line"></div>
+        </div>
+
+        <div class="ds-ba-after">
+          <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=90&fit=crop" alt="After — Heritage Dining dining room" loading="lazy"/>
+          <div class="ds-ba-after-overlay"></div>
+          <div class="ds-ba-badge ds-ba-badge--after">After</div>
+          <div class="ds-ba-shop">
+            <p class="ds-ba-shop-label">Shop this look</p>
+            <ul class="ds-ba-links">
+              <li><a href="https://www.restorationhardware.com/catalog/category/rooms.jsp?categoryId=cat6920004" target="_blank" rel="noopener">Oak Slab Dining Table — RH <span>↗</span></a></li>
+              <li><a href="https://www.cb2.com/furniture/dining-chairs" target="_blank" rel="noopener">Turned Walnut Chairs — CB2 <span>↗</span></a></li>
+              <li><a href="https://www.serenaandlily.com/lighting/pendants/" target="_blank" rel="noopener">Rattan Pendant Light — Serena &amp; Lily <span>↗</span></a></li>
+              <li><a href="https://www.westelm.com/shop/furniture/sideboards-buffets/" target="_blank" rel="noopener">Oak Sideboard — West Elm <span>↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ③ SERVICES ──────────────────────────────────── -->
+    <div class="ds-services">
+      <div class="ds-services-head">
+        <p class="section-eyebrow" data-reveal>Design Services</p>
+        <h2 class="ds-services-title" data-split-reveal>Choose your <em>level</em> of service</h2>
+      </div>
+      <div class="ds-service-cards">
+
+        <div class="ds-service-card reveal-up" style="--si:0">
+          <span class="ds-service-num">01</span>
+          <h3 class="ds-service-name">E-Design</h3>
+          <p class="ds-service-price">From <strong>₹25,000</strong> per room</p>
+          <p class="ds-service-desc">A complete digital design package — mood board, floor plan, curated shopping list with direct retailer links. Perfect for confident DIY decorators.</p>
+          <ul class="ds-service-features">
+            <li>Personalised mood board</li>
+            <li>Scaled floor plan</li>
+            <li>Full shopping list with links</li>
+            <li>2 rounds of revisions</li>
+          </ul>
+          <a href="mailto:hello@luxewood.com?subject=E-Design Enquiry" class="ds-service-cta">Get Started →</a>
+        </div>
+
+        <div class="ds-service-card ds-service-card--featured reveal-up" style="--si:1">
+          <span class="ds-service-tag">Most Popular</span>
+          <span class="ds-service-num">02</span>
+          <h3 class="ds-service-name">Full-Service Design</h3>
+          <p class="ds-service-price">From <strong>₹1,50,000</strong> per room</p>
+          <p class="ds-service-desc">We handle everything — site visit, 3D renders, procurement, project management, and a final styled reveal. Zero stress, maximum impact.</p>
+          <ul class="ds-service-features">
+            <li>In-home consultation visit</li>
+            <li>3D photorealistic renders</li>
+            <li>Full procurement &amp; delivery</li>
+            <li>Styling &amp; final reveal</li>
+            <li>Unlimited revisions</li>
+          </ul>
+          <a href="mailto:hello@luxewood.com?subject=Full-Service Design Enquiry" class="ds-service-cta">Book a Consultation →</a>
+        </div>
+
+        <div class="ds-service-card reveal-up" style="--si:2">
+          <span class="ds-service-num">03</span>
+          <h3 class="ds-service-name">Bespoke Joinery</h3>
+          <p class="ds-service-price"><strong>Custom</strong> pricing</p>
+          <p class="ds-service-desc">Custom-built furniture crafted in our workshop. From fitted wardrobes to statement kitchen islands — designed around your exact space.</p>
+          <ul class="ds-service-features">
+            <li>Bespoke CAD drawings</li>
+            <li>Workshop visit available</li>
+            <li>Material &amp; finish selection</li>
+            <li>10-year craft warranty</li>
+          </ul>
+          <a href="mailto:hello@luxewood.com?subject=Bespoke Joinery Enquiry" class="ds-service-cta">Request a Quote →</a>
+        </div>
+
+      </div>
+
+      <!-- Shop by Room links -->
+      <div class="ds-rooms-strip">
+        <p class="ds-rooms-strip-label" data-reveal>Or explore our rooms yourself</p>
+        <div class="ds-rooms-pills">
+          <a href="#/collection/living-room" class="ds-room-pill" data-magnetic>
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=120&q=75&fit=crop" alt="Living Room"/>
+            <span>Living Room</span>
+          </a>
+          <a href="#/collection/bedroom" class="ds-room-pill" data-magnetic>
+            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=120&q=75&fit=crop" alt="Bedroom"/>
+            <span>Bedroom</span>
+          </a>
+          <a href="#/collection/dining" class="ds-room-pill" data-magnetic>
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=120&q=75&fit=crop" alt="Dining"/>
+            <span>Dining</span>
+          </a>
+          <a href="#/collection/home-office" class="ds-room-pill" data-magnetic>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=75&fit=crop" alt="Home Office"/>
+            <span>Home Office</span>
+          </a>
+          <a href="#/collection/kitchen" class="ds-room-pill" data-magnetic>
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=120&q=75&fit=crop" alt="Kitchen"/>
+            <span>Kitchen</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ ROOM GALLERY ══════════════════════════════════════════════════════ -->
+  <section id="gallery" class="rg-section">
+    <div class="rg-head">
+      <p class="section-eyebrow" data-reveal>Room Gallery</p>
+      <h2 class="rg-title" data-split-reveal>Every room, <em>every style.</em></h2>
+      <p class="rg-sub" data-reveal>Explore designs by room type. Click any card to expand the full shopping list with real product links.</p>
+    </div>
+
+    <!-- Tab nav -->
+    <div class="rg-tabs" role="tablist">
+      <button class="rg-tab rg-tab--active" data-tab="living" role="tab">Living Room</button>
+      <button class="rg-tab" data-tab="bedroom" role="tab">Bedroom</button>
+      <button class="rg-tab" data-tab="kitchen" role="tab">Kitchen</button>
+      <button class="rg-tab" data-tab="office" role="tab">Home Office</button>
+      <button class="rg-tab" data-tab="dining" role="tab">Dining</button>
+    </div>
+
+    <!-- ── LIVING ROOM ── -->
+    <div class="rg-panel rg-panel--active" data-panel="living">
+      <div class="rg-grid">
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=85&fit=crop" alt="Japandi Calm" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Japandi Calm</h3>
+              <p class="rg-card-mood">Light oak, low linen sofa, paper lantern, neutral tones.</p>
+              <div class="rg-palette"><span style="background:#D4C5B2"></span><span style="background:#8B7355"></span><span style="background:#F5F0E8"></span><span style="background:#3D3530"></span><span style="background:#A89880"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.ikea.com/us/en/cat/sofas-fu003/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Linen Low Sofa</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.wayfair.com/furniture/sb0/solid-wood-coffee-tables-c415386.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Solid Oak Coffee Table</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.westelm.com/shop/lighting/floor-lamps/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Rice Paper Floor Lamp</span><span class="rg-badge">West Elm</span></a>
+              <a href="https://www.amazon.com/s?k=natural+jute+area+rug" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Jute Area Rug 8×10</span><span class="rg-badge">Amazon</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=85&fit=crop" alt="Modern Luxe" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Modern Luxe</h3>
+              <p class="rg-card-mood">Charcoal sofa, marble coffee table, brass accents, statement art.</p>
+              <div class="rg-palette"><span style="background:#2B2B2B"></span><span style="background:#C9A96E"></span><span style="background:#F0EDE8"></span><span style="background:#7C7C7C"></span><span style="background:#E8E0D5"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.westelm.com/shop/furniture/sofas-sectionals/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Charcoal Velvet Sofa</span><span class="rg-badge">West Elm</span></a>
+              <a href="https://www.cb2.com/furniture/coffee-tables" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Marble Coffee Table</span><span class="rg-badge">CB2</span></a>
+              <a href="https://www.amazon.com/s?k=brass+floor+lamp+arc" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Brass Arc Floor Lamp</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/decor-pillows/sb0/abstract-canvas-wall-art-c1779875.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Abstract Canvas Art</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=700&q=85&fit=crop" alt="Boho Warmth" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Boho Warmth</h3>
+              <p class="rg-card-mood">Rattan armchair, layered rugs, terracotta tones, plenty of plants.</p>
+              <div class="rg-palette"><span style="background:#C4622D"></span><span style="background:#D4956A"></span><span style="background:#8B6B4A"></span><span style="background:#F5E6D3"></span><span style="background:#6B8C5E"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.amazon.com/s?k=rattan+accent+chair" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Rattan Armchair</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/rugs/sb0/bohemian-area-rugs-c413921.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Layered Boho Rugs</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.ikea.com/us/en/cat/plant-pots-stands-21827/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Terracotta Plant Pots</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.westelm.com/shop/furniture/armchairs-accent-chairs/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Macramé Wall Hanging</span><span class="rg-badge">West Elm</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── BEDROOM ── -->
+    <div class="rg-panel" data-panel="bedroom">
+      <div class="rg-grid">
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=85&fit=crop" alt="Serene Minimal" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Serene Minimal</h3>
+              <p class="rg-card-mood">Platform bed, white-on-beige layers, soft cove lighting.</p>
+              <div class="rg-palette"><span style="background:#F5F0E8"></span><span style="background:#E0D5C5"></span><span style="background:#B8A898"></span><span style="background:#3D3530"></span><span style="background:#C8BDB0"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.westelm.com/shop/furniture/beds-headboards/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Platform Bed Frame</span><span class="rg-badge">West Elm</span></a>
+              <a href="https://www.amazon.com/s?k=linen+duvet+cover+white" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Linen Duvet Set</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.ikea.com/us/en/cat/wardrobes-19053/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Minimal Wardrobe</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.wayfair.com/lighting/sb0/bedside-table-lamps-c415163.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Ceramic Bedside Lamp</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=85&fit=crop" alt="Hotel Suite" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Hotel Suite</h3>
+              <p class="rg-card-mood">Upholstered headboard, symmetrical pendant lights, moody palette.</p>
+              <div class="rg-palette"><span style="background:#1A1A2E"></span><span style="background:#C9A96E"></span><span style="background:#2D2D44"></span><span style="background:#F0EBE3"></span><span style="background:#6B5E4E"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.wayfair.com/furniture/sb0/upholstered-beds-c415369.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Upholstered Bed &amp; Headboard</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.amazon.com/s?k=pendant+bedside+light+set+of+2" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Pendant Bedside Lights ×2</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.westelm.com/shop/furniture/dressers-chests/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Low Dresser</span><span class="rg-badge">West Elm</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=700&q=85&fit=crop" alt="Cozy Scandinavian" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Cozy Scandinavian</h3>
+              <p class="rg-card-mood">Wood frame bed, chunky knit throw, warm white walls.</p>
+              <div class="rg-palette"><span style="background:#F8F4EE"></span><span style="background:#C4A882"></span><span style="background:#8B6B4A"></span><span style="background:#E8DDD0"></span><span style="background:#3D3028"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.ikea.com/us/en/cat/beds-frames-bases-bf003/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Solid Wood Bed Frame</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.amazon.com/s?k=chunky+knit+throw+blanket" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Chunky Knit Throw</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/furniture/sb0/nightstands-c41702.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Pine Nightstand</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── KITCHEN ── -->
+    <div class="rg-panel" data-panel="kitchen">
+      <div class="rg-grid">
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=85&fit=crop" alt="Modern Matte" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Modern Matte</h3>
+              <p class="rg-card-mood">Handle-less matte cabinets, quartz counters, under-cabinet lighting.</p>
+              <div class="rg-palette"><span style="background:#2B2B2B"></span><span style="background:#E8E4DF"></span><span style="background:#C0BAB3"></span><span style="background:#F5F2EE"></span><span style="background:#8B8580"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.ikea.com/us/en/cat/kitchen-cabinets-ka003/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Handle-less Cabinet Doors</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.amazon.com/s?k=under+cabinet+led+lighting+kitchen" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Under-Cabinet LED Strip</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/kitchen-tabletop/sb0/quartz-kitchen-sinks-c418137.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Undermount Kitchen Sink</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=85&fit=crop" alt="Warm Farmhouse" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Warm Farmhouse</h3>
+              <p class="rg-card-mood">Shaker cabinets, open wooden shelves, ceramic pendant lights.</p>
+              <div class="rg-palette"><span style="background:#F5EDD8"></span><span style="background:#C4A882"></span><span style="background:#8B7355"></span><span style="background:#D4C5A9"></span><span style="background:#3D3028"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.amazon.com/s?k=shaker+kitchen+cabinet+doors" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Shaker Cabinet Doors</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/lighting/sb0/farmhouse-kitchen-pendants-c415166.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Ceramic Pendant Light</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.ikea.com/us/en/cat/open-shelving-units-10559/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Open Wood Shelf</span><span class="rg-badge">IKEA</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=700&q=85&fit=crop" alt="Compact Smart" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Compact Smart</h3>
+              <p class="rg-card-mood">Space-saving modular kitchen with tall units and loft storage.</p>
+              <div class="rg-palette"><span style="background:#FFFFFF"></span><span style="background:#E0E0E0"></span><span style="background:#B0B0B0"></span><span style="background:#C9A96E"></span><span style="background:#2B2B2B"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.ikea.com/us/en/cat/wall-cabinets-ka004/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Tall Storage Cabinet</span><span class="rg-badge">IKEA</span></a>
+              <a href="https://www.amazon.com/s?k=pull+out+kitchen+drawer+organizer" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Pull-Out Drawer Organiser</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/kitchen-tabletop/sb0/over-sink-shelves-c487649.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Over-Sink Shelf</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── HOME OFFICE ── -->
+    <div class="rg-panel" data-panel="office">
+      <div class="rg-grid">
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=85&fit=crop" alt="Focus Minimal" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Focus Minimal</h3>
+              <p class="rg-card-mood">Clean desk setup, ergonomic chair, acoustic panel wall.</p>
+              <div class="rg-palette"><span style="background:#F5F2EE"></span><span style="background:#E0D8D0"></span><span style="background:#8B7355"></span><span style="background:#2B2B2B"></span><span style="background:#C4B8A8"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.amazon.com/s?k=standing+desk+solid+wood+top" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Solid Wood Standing Desk</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.amazon.com/s?k=ergonomic+office+chair" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Ergonomic Desk Chair</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/decor-pillows/sb0/acoustic-wall-panels-c491001.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Acoustic Wall Panels</span><span class="rg-badge">Wayfair</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1459908676235-d5f02a50184b?w=700&q=85&fit=crop" alt="Creative Studio" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Creative Studio</h3>
+              <p class="rg-card-mood">Pegboard wall, warm task lighting, open shelving.</p>
+              <div class="rg-palette"><span style="background:#F8F0E0"></span><span style="background:#D4A853"></span><span style="background:#8B6B30"></span><span style="background:#3D3020"></span><span style="background:#C4B090"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.amazon.com/s?k=pegboard+wall+organizer+wood" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Pegboard Wall Panel</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/lighting/sb0/task-desk-lamps-c415175.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Warm Task Lamp</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.ikea.com/us/en/cat/shelving-units-10558/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Open Shelving Unit</span><span class="rg-badge">IKEA</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=85&fit=crop" alt="Executive Classic" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Executive Classic</h3>
+              <p class="rg-card-mood">Walnut desk, leather chair, full library wall.</p>
+              <div class="rg-palette"><span style="background:#3D2B1A"></span><span style="background:#8B6040"></span><span style="background:#C4A882"></span><span style="background:#F5EDD8"></span><span style="background:#1A1A1A"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.amazon.com/s?k=solid+walnut+executive+desk" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Solid Walnut Desk</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.wayfair.com/furniture/sb0/leather-executive-chairs-c413459.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Leather Executive Chair</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.ikea.com/us/en/cat/bookcases-shelving-units-10559/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Floor-to-Ceiling Bookcase</span><span class="rg-badge">IKEA</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── DINING ── -->
+    <div class="rg-panel" data-panel="dining">
+      <div class="rg-grid rg-grid--2">
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=85&fit=crop" alt="Gathered Modern" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Gathered Modern</h3>
+              <p class="rg-card-mood">Round wooden table, sculptural pendant, bench seating.</p>
+              <div class="rg-palette"><span style="background:#C4A882"></span><span style="background:#8B7355"></span><span style="background:#F5EDD8"></span><span style="background:#2B2B2B"></span><span style="background:#D4C5A9"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.wayfair.com/furniture/sb0/round-dining-tables-c45872.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Round Oak Dining Table</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.amazon.com/s?k=dining+bench+wood" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Solid Wood Bench</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.westelm.com/shop/lighting/pendants/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Sculptural Pendant Light</span><span class="rg-badge">West Elm</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="rg-card">
+          <div class="rg-card-img"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=85&fit=crop" alt="Elegant Formal" loading="lazy"/></div>
+          <div class="rg-card-body">
+            <div class="rg-card-top">
+              <h3 class="rg-card-name">Elegant Formal</h3>
+              <p class="rg-card-mood">6-seater with upholstered chairs, statement chandelier.</p>
+              <div class="rg-palette"><span style="background:#1A1A2E"></span><span style="background:#C9A96E"></span><span style="background:#F0EBE3"></span><span style="background:#6B5E4E"></span><span style="background:#3D3028"></span></div>
+            </div>
+            <button class="rg-shop-toggle">Shop This Look <span>+</span></button>
+            <div class="rg-shop-panel">
+              <a href="https://www.wayfair.com/furniture/sb0/6-seater-dining-sets-c415369.html" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">6-Seater Dining Set</span><span class="rg-badge">Wayfair</span></a>
+              <a href="https://www.amazon.com/s?k=dining+chandelier+crystal" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Statement Chandelier</span><span class="rg-badge">Amazon</span></a>
+              <a href="https://www.westelm.com/shop/furniture/dining-chairs/" target="_blank" rel="noopener" class="rg-item"><span class="rg-item-name">Upholstered Dining Chairs</span><span class="rg-badge">West Elm</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── KIDS ROOM ── -->
+  </section>
+
+  <!-- ══ TESTIMONIALS ═══════════════════════════════════════════════════ -->
+  <section id="testimonials" class="testi-section">
+    <div class="testi-head">
+      <p class="section-eyebrow" data-reveal>Client Stories</p>
+      <h2 class="testi-title" data-split-reveal>What our clients <em>say.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal-up" style="--si:0">
+        <p class="testi-quote">"LuxeWood took our blank-slate flat and turned it into the warm, considered home we always pictured but couldn't articulate. The mood board process was revelatory — we knew exactly what we were getting."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#D4C5B2"></div>
+          <div><strong>Priya &amp; Rahul S.</strong><p>Living Room · Mumbai</p></div>
+        </div>
+      </div>
+      <div class="testi-card reveal-up" style="--si:1">
+        <p class="testi-quote">"The curated shopping list alone was worth every penny. Everything linked directly to real products — I didn't have to second-guess a single purchase. The bedroom is exactly the hotel suite I dreamed of."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#C4A882"></div>
+          <div><strong>Charlotte M.</strong><p>Bedroom · London</p></div>
+        </div>
+      </div>
+      <div class="testi-card reveal-up" style="--si:2">
+        <p class="testi-quote">"The 3D renders meant there were genuinely zero surprises on reveal day. Our dining room looks like it belongs in a magazine. The styling on the last day — the cushions, the candles, all of it — was magic."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#B85C38"></div>
+          <div><strong>James T.</strong><p>Dining Room · Melbourne</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA band -->
+    <div class="testi-cta-band">
+      <h2 class="testi-cta-headline">Let's design a room you'll<br><em>never want to leave.</em></h2>
+      <div class="testi-cta-btns">
+        <a href="mailto:hello@luxewood.com?subject=Free Consultation Request" class="ds-btn-terra testi-cta-main">
+          Book a Free Consultation
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <a href="https://wa.me/447700900000?text=Hi%2C%20I%27d%20like%20a%20design%20consultation" target="_blank" rel="noopener" class="testi-cta-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CRAFT ══════════════════════════════════════════════════════════ -->
+  <section id="craft" class="craft-section">
+    <div class="craft-inner">
+
+      <!-- Left: stacked images -->
+      <div class="craft-imgs">
+        <div class="craft-img craft-img--1">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=85&fit=crop" loading="lazy" alt="Craftsmanship"/>
+        </div>
+        <div class="craft-img craft-img--2">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=85&fit=crop" loading="lazy" alt="Wood detail"/>
+        </div>
+        <div class="craft-stats-pill" data-reveal>
+          <span class="stat-pill-num" data-count="4800" data-suffix="+">0</span>
+          <span class="stat-pill-label">Pieces delivered</span>
+        </div>
+      </div>
+
+      <!-- Right: text -->
+      <div class="craft-text">
+        <p class="section-eyebrow" data-reveal>Our Craft</p>
+        <h2 class="craft-title" data-split-reveal>
+          Built to last<br><em>a lifetime</em>
+        </h2>
+        <p class="craft-body" data-reveal>
+          Every piece leaves our workshop only when it's ready — not a moment before. We use traditional mortise-and-tenon joinery, hand-planed surfaces, and finishes applied coat by coat, by hand.
+        </p>
+        <div class="craft-stats-row">
+          <div class="craft-stat" data-reveal>
+            <span class="cstat-n" data-count="15" data-suffix="+">0</span><span class="cstat-l">Years of craft</span>
+          </div>
+          <div class="craft-stat" data-reveal>
+            <span class="cstat-n" data-count="48" data-suffix="">0</span><span class="cstat-l">Countries served</span>
+          </div>
+          <div class="craft-stat" data-reveal>
+            <span class="cstat-n" data-count="100" data-suffix="%">0</span><span class="cstat-l">Solid hardwood</span>
+          </div>
+        </div>
+        <!-- Process inline -->
+        <div class="craft-process" data-reveal>
+          <div class="cp-step"><span>01</span>Consult</div>
+          <div class="cp-arrow">→</div>
+          <div class="cp-step"><span>02</span>Design</div>
+          <div class="cp-arrow">→</div>
+          <div class="cp-step"><span>03</span>Build</div>
+          <div class="cp-arrow">→</div>
+          <div class="cp-step"><span>04</span>Deliver</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ PRODUCTS ═══════════════════════════════════════════════════════ -->
+  <section id="products" class="products-section">
+    <div class="products-inner">
+      <div class="products-header">
+        <div>
+          <p class="section-eyebrow" data-reveal>Featured Pieces</p>
+          <h2 class="section-title" data-split-reveal>Current<br><em>favourites</em></h2>
+        </div>
+        <a href="#" class="products-all-link" data-reveal>
+          View all pieces →
+        </a>
+      </div>
+
+      <div class="products-grid">
+        <!-- Card A — tall (spans 2 rows) -->
+        <div class="pcard pcard--tall">
+          <div class="pcard-img">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=85&fit=crop" loading="lazy" alt="Heritage Sofa"/>
+          </div>
+          <div class="pcard-info">
+            <span class="pcard-cat">Living Room</span>
+            <h4 class="pcard-name">Heritage Sofa</h4>
+            <span class="pcard-price">From ₹1,25,000</span>
+            <button class="pcard-wish">+ Wishlist</button>
+          </div>
+        </div>
+
+        <!-- Card B -->
+        <div class="pcard">
+          <div class="pcard-img">
+            <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=600&q=85&fit=crop" loading="lazy" alt="Elm Coffee Table"/>
+          </div>
+          <div class="pcard-info">
+            <span class="pcard-cat">Living Room</span>
+            <h4 class="pcard-name">Elm Coffee Table</h4>
+            <span class="pcard-price">From ₹45,000</span>
+            <button class="pcard-wish">+ Wishlist</button>
+          </div>
+        </div>
+
+        <!-- Card C -->
+        <div class="pcard">
+          <div class="pcard-img">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=85&fit=crop" loading="lazy" alt="Oak Dining Table"/>
+          </div>
+          <div class="pcard-info">
+            <span class="pcard-cat">Dining</span>
+            <h4 class="pcard-name">Oak Dining Table</h4>
+            <span class="pcard-price">From ₹1,65,000</span>
+            <button class="pcard-wish">+ Wishlist</button>
+          </div>
+        </div>
+
+        <!-- Card D — wide (spans 2 cols) -->
+        <div class="pcard pcard--wide">
+          <div class="pcard-img">
+            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1000&q=85&fit=crop" loading="lazy" alt="Platform Bed"/>
+          </div>
+          <div class="pcard-info">
+            <span class="pcard-cat">Bedroom</span>
+            <h4 class="pcard-name">Platform Bed</h4>
+            <span class="pcard-price">From ₹1,40,000</span>
+            <button class="pcard-wish">+ Wishlist</button>
+          </div>
+        </div>
+
+        <!-- Card E -->
+        <div class="pcard">
+          <div class="pcard-img">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=85&fit=crop" loading="lazy" alt="Walnut Desk"/>
+          </div>
+          <div class="pcard-info">
+            <span class="pcard-cat">Home Office</span>
+            <h4 class="pcard-name">Walnut Standing Desk</h4>
+            <span class="pcard-price">From ₹85,000</span>
+            <button class="pcard-wish">+ Wishlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ════════════════════════════════════════════════════════════ -->
+  <section id="faq" class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <p class="section-eyebrow" data-reveal>FAQ</p>
+        <h2 class="faq-title" data-split-reveal>Common<br><em>questions</em></h2>
+        <p class="faq-sub" data-reveal>
+          Can't find an answer?<br>
+          <a href="mailto:hello@luxewood.com">hello@luxewood.com</a>
+        </p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">How long does a custom piece take?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Most bespoke orders take 6–10 weeks from confirmation to delivery. Complex pieces or rare timber selections may take slightly longer — we'll give you an exact timeline at order.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What woods do you work with?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>We specialise in solid oak, walnut, ash, teak, and elm — all FSC-certified. No veneers. No MDF. No exceptions.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you ship internationally?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Yes. We ship to over 48 countries with white-glove delivery partners. All pieces are fully assembled and placed in your home by our team.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What does the lifetime guarantee cover?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Every structural joint, finish, and hardware element is covered unconditionally for the life of the piece. We repair or replace — no questions asked.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I see pieces before ordering?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Visit our showroom in London, or request a free sample pack of timber swatches and fabric samples delivered to your door.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">LuxeWood</p>
+        <p class="footer-tagline">Spaces that feel like you.</p>
+        <p class="footer-city">Mumbai · Delhi NCR · Bengaluru</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a href="https://www.pinterest.com/" target="_blank" rel="noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.23-5.22 1.23-5.22s-.31-.63-.31-1.56c0-1.46.85-2.55 1.9-2.55.9 0 1.33.67 1.33 1.48 0 .9-.57 2.25-.87 3.5-.25 1.05.52 1.9 1.54 1.9 1.85 0 3.09-2.37 3.09-5.17 0-2.14-1.44-3.64-3.5-3.64-2.38 0-3.78 1.79-3.78 3.63 0 .72.28 1.49.62 1.91.07.08.08.15.06.23l-.23.95c-.04.14-.13.18-.29.11-1.08-.5-1.76-2.09-1.76-3.36 0-2.73 1.98-5.23 5.71-5.23 3 0 5.33 2.14 5.33 4.99 0 2.98-1.88 5.38-4.48 5.38-.87 0-1.7-.45-1.98-1l-.54 2c-.2.75-.72 1.69-1.07 2.26.8.25 1.65.38 2.52.38 5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="currentColor"/></svg>
+            Pinterest
+          </a>
+          <a href="mailto:hello@luxewood.in" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            hello@luxewood.in
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <p class="footer-col-ttl">Spaces</p>
+          <a href="#/collection/living-room" data-room="living-room">Living Room</a>
+          <a href="#/collection/bedroom" data-room="bedroom">Bedroom</a>
+          <a href="#/collection/dining" data-room="dining">Dining</a>
+          <a href="#/collection/home-office" data-room="home-office">Home Office</a>
+          <a href="#/collection/kitchen" data-room="kitchen">Kitchen</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-ttl">Company</p>
+          <a href="#/page/about">About Us</a>
+          <a href="#/page/contact">Contact</a>
+          <a href="#/quote">Request a Quote</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-ttl">Contact</p>
+          <a href="mailto:hello@luxewood.in">hello@luxewood.in</a>
+          <a href="https://wa.me/919910809899" target="_blank" rel="noopener">WhatsApp · +91 99108 XXXXX</a>
+          <a href="#/page/contact">Mumbai · Delhi NCR · Bengaluru</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="footer-year">2026</span> LuxeWood Interior Design. All rights reserved.</p>
+      <p class="footer-disclaimer">Product links may lead to third-party stores; prices are set by the respective platforms.</p>
+      <div class="footer-legal">
+        <a href="#/page/privacy">Privacy</a><span>·</span><a href="#/page/terms">Terms</a><span>·</span><a href="#/page/cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ FLOATING WHATSAPP CHAT BUTTON ══════════════════════════════════ -->
+  <!-- WhatsApp business number -->
+  <a class="wa-fab" id="wa-fab"
+     href="https://wa.me/919910809899?text=Hi%20LuxeWood!%20I'd%20like%20to%20discuss%20a%20design%20quotation."
+     target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <span class="wa-fab-label">Chat with us</span>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- ══ OVERLAY PAGES ══════════════════════════════════════════════════ -->
+  <div id="page-collection" class="overlay-page">
+    <div class="col-header">
+      <button class="back-btn" id="collection-back">
+        <svg viewBox="0 0 20 20" fill="none" width="18" height="18"><path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Back
+      </button>
+      <div class="col-header-text">
+        <p class="col-eyebrow" id="col-eyebrow">Choose Your Style</p>
+        <h1 class="col-title" id="col-title">Living Room</h1>
+      </div>
+    </div>
+    <div id="styles-grid" class="styles-grid"></div>
+    <div class="other-rooms">
+      <p class="other-rooms-label">Explore other spaces</p>
+      <div id="other-room-pills" class="other-room-pills"></div>
+    </div>
+  </div>
+
+  <div id="page-room" class="overlay-page">
+    <div class="room-topbar">
+      <button class="back-btn" id="room-back">
+        <svg viewBox="0 0 20 20" fill="none" width="18" height="18"><path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Styles
+      </button>
+      <p class="room-breadcrumb" id="room-breadcrumb"></p>
+      <div class="room-topbar-right">
+        <label class="day-night-toggle" title="Toggle day / night">
+          <svg class="dn-icon" viewBox="0 0 24 24" fill="none" width="16" height="16"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="checkbox" id="dn-checkbox"/>
+          <span class="dn-track"><span class="dn-thumb"></span></span>
+          <svg class="dn-icon" viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </label>
+        <button class="other-styles-btn" id="other-styles-btn">Other Styles</button>
+      </div>
+    </div>
+    <div id="room-canvas-container"></div>
+    <div id="hotspot-panel" class="hotspot-panel" aria-hidden="true">
+      <button class="hotspot-close" id="hotspot-close">✕</button>
+      <p class="hotspot-room" id="hotspot-room"></p>
+      <h3 id="hotspot-name"></h3>
+      <p id="hotspot-desc"></p>
+      <p class="hotspot-price" id="hotspot-price"></p>
+      <button class="btn btn--small btn--primary">Add to Wishlist</button>
+    </div>
+  </div>
+
+  <!-- ══ LOADING ════════════════════════════════════════════════════════ -->
+  <div id="loading-overlay">
+    <div class="loading-inner">
+      <p class="loading-logo">LuxeWood</p>
+      <div class="loading-bar"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- React rooms app mount point -->
+  <div id="rooms-app"></div>
+
+  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/react/mount.jsx"></script>
+</body>
+</html>
